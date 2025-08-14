@@ -10,14 +10,17 @@ using TaskTrackerAPI.DataAccess.Interface;
 using TaskTrackerAPI.DataAccess.Repository;
 using TaskTrackerAPI.Domain.Configurations;
 using TaskTrackerAPI.Domain.Models;
+using TaskTrackerAPI.Middlewares;
 using TaskTrackerAPI.Utility;
 
 namespace TaskTrackerAPI.Extensions;
 
-public static class ServiceCollectionExtention
+public static class ServiceCollectionExtensions
 {
     public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
     {
+        services.AddTransient<ErrorHandlingMiddleware>();
+        services.AddHttpContextAccessor();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ITaskRepository, TaskRepository>();
         services.AddScoped<ITokenService, TokenService>();
@@ -29,7 +32,7 @@ public static class ServiceCollectionExtention
         this IServiceCollection services, IConfiguration configuration)
     {
         services
-            .AddValidatorsFromAssembly(typeof(ServiceCollectionExtention).Assembly)
+            .AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly)
             .AddFluentValidationAutoValidation();
          
         services.AddDbContext<ApplicationDbContext>(option => 

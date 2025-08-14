@@ -1,6 +1,6 @@
 namespace TaskTrackerAPI.Domain.Models;
 
-public class StatusOfTask
+public enum StatusOfTask
 {
-    
+    Pending , InProgress, Completed
 }

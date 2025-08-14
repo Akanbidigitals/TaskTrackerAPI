@@ -1,6 +1,7 @@
 namespace TaskTrackerAPI.Utility;
 
-public class PoliciesConstant
+public static class PoliciesConstant
 {
-    
+    public const string User = "User";
+    public const string Manager = "Manager";
 }

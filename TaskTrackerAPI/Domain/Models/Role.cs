@@ -1,6 +1,7 @@
 namespace TaskTrackerAPI.Domain.Models;
 
-public class Role
+public enum Role
 {
-    
+    User,
+    Manager
 }

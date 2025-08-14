@@ -1,6 +1,6 @@
 namespace TaskTrackerAPI.Exceptions;
 
-public class NotFoundException
+public class NotFoundException(string message) : Exception(message)
 {
     
 }
